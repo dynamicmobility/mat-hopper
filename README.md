@@ -25,18 +25,8 @@
 Table of contents
 -----
   * [Installation](#Installation)
-  * [Data](#Simulation Setup)
-     * [Run Simulations of Mono-Materials](#Run Simulations of Mono-Materials)
-  * [Method](#Method)
-    * [Learning Regressors](#Learning-regressors)
-    * [SKEL-J](#SKEL-J)
-  * [Evaluation](#Evaluation)
-    * [Baselines](#Run-Baselines)
-    * [Compute Metrics](#Compute-Metrics)
-    * [Visualize](#Visualize)
-  * [Acknowledgements](#Acknowledgements)
+  * [Data](#Simulation-Setup)
   * [Citation](#Citation)
-  * [License](#License)
 ------
 
 ## Installation
@@ -52,7 +42,7 @@ This code was tested with:
 This repository provides a simulation environment for one-legged hopping that models physical material designs. This repository is intended to accompany our ICRA 2025 submission titled ''Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping''.
 
 
-## Simulation Setup
+## Simulation-Setup
 Our framework utilizes the python bindings of MuJoCo (documentation: https://mujoco.readthedocs.io/en/stable/python.html)
 To install this on your computer, you should only have to run the following
 ``` 
@@ -96,7 +86,7 @@ python test_hopping
 ```
 Within this script, you can select which behavior you would like to run, and which xml you would like to utilize. 
 
-## Citation
+# Citation
 
 ```bibtex
 @misc{schulz_materials_2024,
