@@ -1,0 +1,16 @@
+
+.DS_Store
+
+data.csv
+
+MUJOCO_LOG.TXT
+
+*.asv
+
+__pycache__/
+
+*.eps
+
+*.png
+
+*.zip

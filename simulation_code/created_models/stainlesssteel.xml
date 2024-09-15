@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Leg">
+
+    <default>
+      <joint limited="true" damping="1" armature="0" />
+      <geom conaffinity="0" contype="0" />
+      <motor ctrllimited="false" />
+    </default>
+
+    <option timestep="0.0001" iterations="50" tolerance="1e-10" solver="Newton" jacobian="dense" cone="pyramidal" />
+
+    <size nconmax="50" njmax="200" nstack="10000" />
+        
+    <visual>
+        <map force="0.1" zfar="30" />
+        <rgba haze="0.15 0.25 0.35 1" />
+        <quality shadowsize="2048" />
+        <global offwidth="800" offheight="800" />
+    </visual>
+
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="512" />
+
+        <texture name="texplane" type="2d" builtin="checker" rgb1=".9 .9 .9" rgb2=".85 0.85 0.85" width="512" height="512" mark="cross" markrgb=".8 .8 .8" />
+
+        <texture name="texgeom" type="cube" builtin="flat" mark="cross" width="127" height="1278" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01" />
+
+        <texture name="crossgeom" type="cube" builtin="checker" width="127" height="127" rgb1="1 1 1" rgb2="0.9 0.9 0.9" mark="cross" markrgb="0.5 0.5 0.5" />
+
+        <material name="matplane" reflectance="0.3" texture="texplane" texrepeat="1 1" texuniform="true" />
+
+        <material name="matgeom" texture="texgeom" texuniform="true" rgba="0.8 0.6 .4 1" />
+        <material name="tech gold" rgba="0.702 0.639 0.412 1" />
+        <material name="dark gold" rgba="0.521 0.455 0.216 1" />
+        <material name="light gold" rgba="0.749 0.702 0.486 1" />
+        <material name="navy blue" rgba="0 0.188 0.341 1" />
+        <material name="grey" texture="crossgeom" texuniform="true" rgba="0.4 0.4 0.4 1" />
+    </asset>
+
+    <worldbody>
+        <geom name="floor" conaffinity="1" condim="6" pos="0 0 0" quat="1 0 0 0" size="0 0 .25" type="plane" material="matplane" />
+        <geom name="ramp" conaffinity="1" condim="6" friction="1 0.005 0.0001" type="box" pos="2.0 0 -0.03" size="2 0.5 0.1" rgba="0.098 0.234 0.459 1" euler="0 -2 0" group="2" />
+
+            <light directional="false" diffuse=".2 .2 .2" specular="0.1 0.1 0.1" pos="0 0 5" dir="0 -1 -1" castshadow="false" />
+            <light mode="targetbodycom" target="base" directional="false" diffuse=".5 .5 .5" specular="0.8 0.8 0.8" pos="0 0 4.0" dir="0 0 -1" castshadow="false" />
+    </worldbody>
+    
+    <worldbody>
+        <body name="base" pos="0 0 0">
+        
+        <joint name="rootx" limited="false" type="slide" stiffness="0" damping="0" frictionloss="0" axis="1 0 0" />
+        <joint name="rooty" limited="false" type="slide" stiffness="0" damping="0" frictionloss="0" axis="0 1 0" />
+        <joint name="rootz" limited="false" type="slide" stiffness="0" damping="0" frictionloss="0" axis="0 0 1" />
+        <joint name="rootroll" limited="false" type="hinge" stiffness="0" damping="0" frictionloss="0" axis="1 0 0" />
+        <joint name="rootpitch" limited="false" type="hinge" stiffness="0" damping="0" frictionloss="0" axis="0 1 0" />
+        <joint name="rootyaw" limited="false" type="hinge" stiffness="0" damping="0" frictionloss="0" axis="0 0 1" />
+            <geom name="torso" type="capsule" fromto="-0.12 0 0 0.12 0 0" size="0.09" mass="7.5" material="grey" />
+            <geom name="torso2" type="capsule" fromto="0 -0.12 0 0 0.12 0" size="0.09" mass="7.5" material="grey" />
+            <site group="0" name="base" pos="0 0 0" quat="1 0 0 0" size="0.04" rgba="1 1 1 0" />
+            <body name="leg" pos="0 0 0">
+                <site group="2" name="leg" pos="0 0 0" quat="1 0 0 0" size="0.06" rgba="1 1 1 0" />
+                <joint name="hip_y" type="hinge" pos="0 0 0" axis="0 1 0" range="-70 70" damping="20" stiffness="20" /> 
+                <joint name="hip_x" type="hinge" pos="0 0 0" axis="1 0 0" range="-70 70" damping="20" stiffness="20" /> 
+                <geom name="leg" type="capsule" fromto="0 0 0 0 0 -.05" size="0.03" density="1000" material="grey" />
+                
+                <geom name="mat1_1" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="8000" material="tech gold" />
+                <body name="mat1" pos="0 0 -0.1">
+                    <joint name="mat_spring1" axis="0 0 -1" type="slide" pos="0 0 0" stiffness="1.82E8" limited="false" />
+                    <geom name="mat1_2" type="capsule" fromto="0 0 0 0 0 -.05" size="0.025" density="8000" material="tech gold" />
+                    
+                    <geom name="mat2_1" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="8000" material="dark gold" />
+                    <body name="mat2" pos="0 0 -0.1">
+                        <joint name="mat_spring2" axis="0 0 -1" type="slide" pos="0 0 0" stiffness="1.82E8" limited="false" /> 
+                        <geom name="mat2_2" type="capsule" fromto="0 0 0 0 0 -.05" size="0.025" density="8000" material="dark gold" />
+                        <geom name="mat3_1" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="8000" material="navy blue" />
+                        
+                        <body name="mat3" pos="0 0 -0.1">
+                            <joint name="mat_spring3" axis="0 0 -1" type="slide" pos="0 0 0" stiffness="1.82E8" limited="false" />
+                            <geom name="mat3_2" type="capsule" fromto="0 0 0 0 0 -.05" size="0.025" density="8000" material="navy blue" />
+                            <geom name="foot_upper" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="1000" material="grey" />
+                            
+                            <body name="foot_lower" pos="0 0 -0.1">
+                                <joint name="spring" axis="0 0 -1" type="slide" pos="0 0 0" limited="true" range="-0.1 0.1" stiffness="8000" damping="10" />
+                                <geom name="foot_lower" type="capsule" fromto="0 0 0 0 0 -.2" size="0.04" mass="0.5" conaffinity="1" contype="1" condim="6" material="tech gold" />
+                                <site group="2" name="toe" pos="0 0 -0.2" quat="1 0 0 0" size="0.04" rgba="1 1 1 0" />
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <motor name="hip_y" gear="600" joint="hip_y" />
+        <motor name="hip_x" gear="600" joint="hip_x" />
+        <motor name="spring" joint="spring" />
+    </actuator>
+
+    <sensor>
+        <touch name="toeGRF" site="toe" />
+        <framepos name="basepos" objtype="site" objname="base" />
+        <framequat name="basequat" objtype="site" objname="base" />
+        <gyro name="basegyro" site="base" />
+        <framelinvel name="basevel" objtype="site" objname="base" />
+        <torque name="hip_torque" site="leg" />
+        <accelerometer name="baseaccel" site="base" />
+    </sensor>
+
+</mujoco>
