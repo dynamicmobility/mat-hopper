@@ -20,12 +20,7 @@
   <p align="center"> 
 
   <img src="GitHubHeaderHopper.png">
-</div>
-## Table of Contents
-Overall, this code includes methods for the following:
-- simulating material stiffness through spring-joint infusion in Mujoco
-- simulating material stiffness embedded in a robotic hopper
-- simulating plotting of specific behaviors of the robotic hopper
+
 
 ## Installation
 This code was tested with:
