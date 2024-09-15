@@ -13,7 +13,7 @@
 <p>
   <p align="center"> 
 
-  <img src="media/SciFigTitle.png">
+  <img src="GitHubHeaderHopper.png">
   </p>
   <strong>*</strong> designates equivalent contributions to this GitHub repository. 
 </p>
