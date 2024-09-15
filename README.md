@@ -20,6 +20,8 @@
 <p align="center" style="margin: 2em auto;">
     <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
   </p>
+
+</div>
 Table of contents
 -----
   * [Installation](#Installation)
