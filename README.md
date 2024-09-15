@@ -1,5 +1,7 @@
 <p align="center">
+  <p align="center"> 
 
+  <img src="GitHubHeaderHopper.png">
   <h1 align="center">Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping
   </h1>
   <p align="center">
@@ -11,9 +13,7 @@
     ·
 </p>
 <p>
-  <p align="center"> 
 
-  <img src="GitHubHeaderHopper.png">
   </p>
   <strong>*</strong> designates equivalent contributions to this GitHub repository. 
 </p>
