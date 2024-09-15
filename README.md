@@ -22,12 +22,15 @@
   </p>
 
 </div>
-Table of contents
------
-  * [Installation](#Installation)
-  * [Data](#Simulation-Setup)
-  * [Citation](#Citation)
-------
+## Table of Contents
+  * [License](#license)
+  * [Description](#description)
+    * [Setup](#setup)
+    * [Fitting](#fitting)
+  * [Dependencies](#dependencies)
+  * [Citation](#citation)
+  * [Acknowledgments](#acknowledgments)
+  * [Contact](#contact)
 
 ## Installation
 This code was tested with:
