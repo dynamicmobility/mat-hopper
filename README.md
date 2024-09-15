@@ -23,14 +23,10 @@
 
 </div>
 ## Table of Contents
-  * [License](#license)
-  * [Description](#description)
-    * [Setup](#setup)
-    * [Fitting](#fitting)
-  * [Dependencies](#dependencies)
-  * [Citation](#citation)
-  * [Acknowledgments](#acknowledgments)
-  * [Contact](#contact)
+Overall, this code includes methods for the following:
+- simulating material stiffness through spring-joint infusion in Mujoco
+- simulating material stiffness embedded in a robotic hopper
+- simulating plotting of specific behaviors of the robotic hopper
 
 ## Installation
 This code was tested with:
@@ -99,5 +95,17 @@ Within this script, you can select which behavior you would like to run, and whi
 }
 
 ```
+## License
+See the LICENSE file for more information. 
 
+## Acknowledgements
+The authors would like to acknowledge that much of this work is possible with the help of several different repositories including [the Mujoco XML Reference](https://mujoco.readthedocs.io/en/stable/XMLreference.html). 
+
+The authors thank the International Max Planck Research School for Intelligent Systems, [IMPRS-IS](https://imprs.is.mpg.de/) for supporting AKS. The authors thank the authors of the [BITE paper](https://bite.is.tue.mpg.de/) for this Readme template. Thanks to [Katherine J. Kuchenbecker](https://is.mpg.de/~kjk) for support and feedback.
+
+## Contact 
+
+This code repository was implemented by [Andrew Schulz](https://github.com/Aschulz94), [Ayah Ahmad](https://github.com/ayah-ahmad), and [Maegan Tucker](https://github.com/maegant) in collaboration between [The Dynamic Mobility Group](https://dynamicmobility.github.io/) and Georgia Tech and the [Haptic Intelligence Department](https://hi.is.mpg.de/) at Max Planck Institute for Intelligent Systems. 
+
+Give a ⭐ if you like our work. 
 
