@@ -1,3 +1,24 @@
+<p align="center">
+
+  <h1 align="center">Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping
+  </h1>
+  <p align="center">
+    <a href="https://is.mpg.de/person/rokhmanova"><strong>Andrew K. Schulz*</strong></a>
+    ·
+    <a href="https://ayah-ahmad.github.io/"><strong>Ayah G. Ahmad*</strong></a>
+    ·
+	<a href="https://maegantucker.com/"><strong>Maegan Tucker*</strong></a>
+    ·
+</p>
+<p>
+  <p align="center"> 
+
+  <img src="media/SciFigTitle.png">
+  </p>
+  <strong>*</strong> designates equivalent contributions to this GitHub repository. 
+</p>
+
+
 # mat-hopper
 This repository provides a simulation environment for one-legged hopping that models physical material designs. This repository is intended to accompany our ICRA 2025 submission titled ``Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping''.
 
