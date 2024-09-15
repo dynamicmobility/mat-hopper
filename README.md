@@ -25,9 +25,9 @@
 Table of contents
 -----
   * [Installation](#Installation)
-  * [Data](#Data)
+  * [Data](#Simulation Setup)
+     * [Run Simulations of Mono-Materials](#Run Simulations of Mono-Materials)
   * [Method](#Method)
-    * [Ground-truth MRI Bones](#MRI-Bones)
     * [Learning Regressors](#Learning-regressors)
     * [SKEL-J](#SKEL-J)
   * [Evaluation](#Evaluation)
@@ -44,6 +44,7 @@ This code was tested with:
 - Ubuntu 22.4
 - CUDA 11.8
 - python 3.9 
+
 
 
 
@@ -64,7 +65,7 @@ After installing `mujoco`, you can test your installation by opening the standal
 python -m mujoco.viewer
 ```
 
-## Run Simulations of Mono-Materials
+### Run Simulations of Mono-Materials
 To run the first set of experiments, run the python script `run_experiment_one.py`:
 ```
 python run_experiment_one.py
