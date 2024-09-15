@@ -46,6 +46,15 @@ python test_hopping
 ```
 Within this script, you can select which behavior you would like to run, and which xml you would like to utilize. 
 
+## Citation
 
+```bibtex
+@misc{schulz_materials_2024,
+	title = {Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping},
+	author = {Schulz, Andrew K. and Ahmad, Ayah G. and Tucker, Maegan},
+	year = {2024},
+}
+
+```
 
 
