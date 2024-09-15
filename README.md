@@ -1,11 +1,8 @@
 <p align="center">
-  <p align="center"> 
-
-  <img src="GitHubHeaderHopper.png">
   <h1 align="center">Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping
   </h1>
   <p align="center">
-    <a href="https://is.mpg.de/person/rokhmanova"><strong>Andrew K. Schulz*</strong></a>
+    <a href="https://hi.is.mpg.de/person/aschulz"><strong>Andrew K. Schulz*</strong></a>
     ·
     <a href="https://ayah-ahmad.github.io/"><strong>Ayah G. Ahmad*</strong></a>
     ·
@@ -20,7 +17,9 @@
 <p align="center" style="margin: 2em auto;">
     <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
   </p>
+  <p align="center"> 
 
+  <img src="GitHubHeaderHopper.png">
 </div>
 ## Table of Contents
 Overall, this code includes methods for the following:
@@ -101,11 +100,11 @@ See the LICENSE file for more information.
 ## Acknowledgements
 The authors would like to acknowledge that much of this work is possible with the help of several different repositories including [the Mujoco XML Reference](https://mujoco.readthedocs.io/en/stable/XMLreference.html). 
 
-The authors thank the International Max Planck Research School for Intelligent Systems, [IMPRS-IS](https://imprs.is.mpg.de/) for supporting AKS. The authors thank the authors of the [BITE paper](https://bite.is.tue.mpg.de/) for this Readme template. Thanks to [Katherine J. Kuchenbecker](https://is.mpg.de/~kjk) for support and feedback.
+The authors thank the Alexander von Humboldt Foundation and International Max Planck Research School for Intelligent Systems, [IMPRS-IS](https://imprs.is.mpg.de/) for supporting AKS. The authors thank the authors of the [BITE paper](https://bite.is.tue.mpg.de/) for this Readme template. Thanks to [Katherine J. Kuchenbecker](https://is.mpg.de/~kjk) for the support. 
 
 ## Contact 
 
-This code repository was implemented by [Andrew Schulz](https://github.com/Aschulz94), [Ayah Ahmad](https://github.com/ayah-ahmad), and [Maegan Tucker](https://github.com/maegant) in collaboration between [The Dynamic Mobility Group](https://dynamicmobility.github.io/) and Georgia Tech and the [Haptic Intelligence Department](https://hi.is.mpg.de/) at Max Planck Institute for Intelligent Systems. 
+This code repository was implemented by [Andrew Schulz](https://github.com/Aschulz94), [Ayah Ahmad](https://github.com/ayah-ahmad), and [Maegan Tucker](https://github.com/maegant) in collaboration between [The Dynamic Mobility Group](https://dynamicmobility.github.io/) at Georgia Tech and the [Haptic Intelligence Department](https://hi.is.mpg.de/) at the Max Planck Institute for Intelligent Systems - Stuttgart. 
 
 Give a ⭐ if you like our work. 
 
