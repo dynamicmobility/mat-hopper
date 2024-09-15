@@ -1,8 +1,8 @@
 import numpy as np
-from single_leg_hopper_code.history import *
+from simulation_code.history import *
 from subprocess import call
 import os
-from helper_utils import *
+from simulation_code.helper_utils import *
 from plotting_code.compare_simtimes import compare_dts
 
 experiment_name = "Simulation Speed"
@@ -32,7 +32,7 @@ for i in range(num_steps):
             os.makedirs(cond_folder_name)
             
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
-        base_file_path = os.path.join(user_path, "models", "material_single_link_hoppers", "base.xml")
+        base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
         parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
 
 # Run Simulations with decreasing dt until convergence
@@ -52,7 +52,7 @@ for folder in os.listdir(main_exp_folder):
         while not success_name in os.listdir(folder_path):
             dt = dt_vec[i]
             parse_file_dt(xml_path, temp_xml_path, str(dt))
-            call(["mjpython", "single_leg_hopper_code/test-failure.py", "xml", str(behavior), temp_xml_path, folder_path])   
+            call(["mjpython", "simulation_code/test-failure.py", "xml", str(behavior), temp_xml_path, folder_path])   
             dt = dt*0.1
             i = i + 1
 

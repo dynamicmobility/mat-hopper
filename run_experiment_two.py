@@ -1,4 +1,4 @@
-from helper_utils import *
+from simulation_code.helper_utils import *
 from subprocess import call
 import os, sys
 from plotting_code.compare_experiments import *
@@ -111,7 +111,7 @@ def run_exp(experiment_name):
             os.makedirs(cond_folder_name)
             
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
-        base_file_path = os.path.join(user_path, "models", "material_single_link_hoppers", "base.xml")
+        base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
         parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
         
         
@@ -128,7 +128,7 @@ def run_exp(experiment_name):
             os.makedirs(cond_folder_name)
             
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
-        base_file_path = os.path.join(user_path, "models", "material_single_link_hoppers", "base.xml")
+        base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
         parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
         
     # Run Simulations
@@ -142,9 +142,9 @@ def run_exp(experiment_name):
                 pkl_name = "data_" + str(behavior) + ".pkl"
                 if not pkl_name in os.listdir(folder_path):
                     if sys.platform == "linux":
-                        call(["python3", "single_leg_hopper_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])
+                        call(["python3", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])
                     else:
-                        call(["mjpython", "single_leg_hopper_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])            
+                        call(["mjpython", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])            
                         
     # Plot Experiments
     plot_exp2(experiment_name)

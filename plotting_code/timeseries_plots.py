@@ -5,7 +5,7 @@ import math
 import seaborn as sns
 from pypalettes import get_hex
 import matplotlib.pyplot as plt
-from single_leg_hopper_code.history import *
+from simulation_code.history import *
 from subprocess import call
 import os, re
 from scipy import stats

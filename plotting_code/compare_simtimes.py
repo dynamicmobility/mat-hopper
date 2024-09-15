@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
-from single_leg_hopper_code.history import *
+from simulation_code.history import *
 import os
 from matplotlib.ticker import ScalarFormatter
 

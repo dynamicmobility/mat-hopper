@@ -1,4 +1,6 @@
 import xml.etree.ElementTree as ET
+import os
+
 def parse_file(filename, output_filename, density, stiffness):
     tree = ET.parse(filename)
     root = tree.getroot()
@@ -43,10 +45,11 @@ def parse_file_dt(filename, output_filename, dt):
     return output_filename
 
 if __name__ == "__main__":
-    base_filename = "base.xml"
-    # parse_file(base_filename, "aluminum.xml", ["2700","2700","2700"], ["6.6E7","6.6E7","6.6E7"])
-    parse_file(base_filename, "pvc.xml", "1390", "3.77E6")
-    parse_file(base_filename, "aluminum.xml", "2700", "6.6E7")
-    parse_file(base_filename, "titanium.xml", "4430", "1.13E8")
-    parse_file(base_filename, "stainlesssteel.xml", "8000", "1.82E8")
-    parse_file(base_filename, "alum-oxide.xml", "3900", "3.2E8")
+    base_filename = os.path.join("simulation_code", "base-material.xml")
+    
+    materials_folder = os.path.join("simulation_code", "created_models")
+    parse_file(base_filename, os.path.join(materials_folder, "pvc.xml"), "1390", "3.77E6")
+    parse_file(base_filename, os.path.join(materials_folder, "aluminum.xml"), "2700", "6.6E7")
+    parse_file(base_filename, os.path.join(materials_folder, "titanium.xml"), "4430", "1.13E8")
+    parse_file(base_filename, os.path.join(materials_folder, "stainlesssteel.xml"), "8000", "1.82E8")
+    parse_file(base_filename, os.path.join(materials_folder, "alum-oxide.xml"), "3900", "3.2E8")

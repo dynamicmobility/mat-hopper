@@ -1,4 +1,4 @@
-from helper_utils import *
+from simulation_code.helper_utils import *
 from subprocess import call
 import os, sys
 from plotting_code.compare_experiments import *
@@ -34,7 +34,7 @@ for i in range(len(density_vals)):
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
         if not os.path.exists(cond_folder_name):
             os.makedirs(cond_folder_name)
-        default_file_path = os.path.join(user_path, "models", "material_single_link_hoppers", "mujoco-default.xml")
+        default_file_path = os.path.join(user_path, "simulation_code", "mujoco-default.xml")
         
         # Open the source file in read mode and the destination file in write mode
         with open(default_file_path, 'rb') as src, open(cond_folder_path, 'wb') as dst:
@@ -47,7 +47,7 @@ for i in range(len(density_vals)):
         if not os.path.exists(cond_folder_name):
             os.makedirs(cond_folder_name)
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
-        base_file_path = os.path.join(user_path,"models", "material_single_link_hoppers", "base.xml")
+        base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
         parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
     
 # Run Simulations
