@@ -1,5 +1,5 @@
-# mm-hopper
-This repository provides a simulation environment for one-legged hopping that models physical material designs. This repository is intended to accompany our ICRA 2025 submission titled ``Materials Matter: A Case Study for Evaluating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping''.
+# mat-hopper
+This repository provides a simulation environment for one-legged hopping that models physical material designs. This repository is intended to accompany our ICRA 2025 submission titled ``Materials Matter: Investigating Functional Advantages of Bio-Inspired Materials via Simulated Robotic Hopping''.
 
 
 ## Simulation Setup
