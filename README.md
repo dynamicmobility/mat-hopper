@@ -20,6 +20,28 @@
 <p align="center" style="margin: 2em auto;">
     <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
   </p>
+Table of contents
+-----
+  * [Installation](#Installation)
+  * [Data](#Data)
+  * [Method](#Method)
+    * [Ground-truth MRI Bones](#MRI-Bones)
+    * [Learning Regressors](#Learning-regressors)
+    * [SKEL-J](#SKEL-J)
+  * [Evaluation](#Evaluation)
+    * [Baselines](#Run-Baselines)
+    * [Compute Metrics](#Compute-Metrics)
+    * [Visualize](#Visualize)
+  * [Acknowledgements](#Acknowledgements)
+  * [Citation](#Citation)
+  * [License](#License)
+------
+
+## Installation
+This code was tested with:
+- Ubuntu 22.4
+- CUDA 11.8
+- python 3.9 
 
 
 
