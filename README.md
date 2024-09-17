@@ -15,7 +15,7 @@
   <strong>*</strong> designates equivalent contributions to this GitHub repository. 
 </p>
 <p align="center" style="margin: 2em auto;">
-    <a href='https://arxiv.org/'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
+    <a href='[https://arxiv.org/](https://arxiv.org/abs/2409.09895)'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
   </p>
   <p align="center"> 
 
