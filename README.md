@@ -23,7 +23,7 @@
   <p align="center"> 
 
 <div style="display:flex;">
-    <img src="assets/func-grad.gif" width="80%" style="margin-right: 1px;">
+    <img src="assets/func-grad.gif" width="100%">
 </div>
 
 
