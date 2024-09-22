@@ -1,10 +1,34 @@
 from simulation_code.helper_utils import *
 from subprocess import call
 import os, sys
+import argparse
 from plotting_code.compare_experiments import *
 from plotting_code.timeseries_plots import *
 from itertools import combinations
-    
+
+def assign_colors(label):
+    colors = []
+    for i in range(3):
+        print("Label: ", label[i])
+        if label[i] == "PVC":
+            colors.append([0.729411765, 0.635294118, 0.450980392])
+        if label[i] == "AL":
+            colors.append([0.611764706, 0.615686275, 0.709803922])
+        if label[i] == "Ti":
+            colors.append([0.498039216, 0.501960784, 0.674509804])
+        if label[i] == "SS":
+            colors.append([0.411764706, 0.419607843, 0.658823529])
+        
+    print(colors)
+    return colors[0], colors[1], colors[2]
+
+def get_folder_name(materials, characteristic):
+    general_folder = os.getcwd()
+    exp3_folder = "Experiment_3"
+    flattened_folders = [os.path.join(b, item)for b in [os.path.join(general_folder, exp3_folder, f"{characteristic}_{a}")for a in ["Increase", "Decrease"]]for item in os.listdir(b)]
+    exp3_results_folders = [folder for folder in flattened_folders if f'{materials[0]}' in folder and f'{materials[1]}' in folder and f'{materials[2]}' in folder]     
+    return exp3_results_folders
+
 def run_experiment(exp, mod_opt=None, density_opt = None):    
     """
     This function runs Experiment 3.
@@ -79,6 +103,13 @@ def run_experiment(exp, mod_opt=None, density_opt = None):
         label2 = labels[p][1]
         label3 = labels[p][2]
         if exp == "materials_incr" or exp == "materials_decr":
+            color1, color2, color3 = assign_colors([label1, label2, label3])    
+        else:
+            color1 = [0.725490196, 0.325490196, 0.623529412]
+            color2 = color1 
+            color3 = color1
+            
+        if exp == "materials_incr" or exp == "materials_decr":
             condition_name = f'{label1}_{label2}_{label3}'
         if exp == "density_decr" or exp == "density_incr":
             condition_name = f'E={modulus}, ρ={label1}_{label2}_{label3}'
@@ -93,15 +124,15 @@ def run_experiment(exp, mod_opt=None, density_opt = None):
             density_values = list(map(density_conversion, permutations[p]))
             modulus_values = list(map(modulus_to_stiffness, modulus[p]))
             print(labels[p], density_values, modulus_values)
-            parse_file(base_file_path, cond_folder_path, density_values, modulus_values)
+            parse_file(base_file_path, cond_folder_path, density_values, modulus_values, color1, color2, color3)
         if exp == "density_decr" or exp == "density_incr":
             density_values = list(map(density_conversion, permutations[p]))
             modulus_values = [modulus_to_stiffness(modulus)]*3
-            parse_file(base_file_path, cond_folder_path, density_values, modulus_values)
+            parse_file(base_file_path, cond_folder_path, density_values, modulus_values, color1, color2, color3)
         if exp == "modulus_incr" or exp == "modulus_decr":
             modulus_values = map(modulus_to_stiffness, permutations[p])
             density_values = [density_conversion(density)]*3
-            parse_file(base_file_path, cond_folder_path, density_values, modulus_values)
+            parse_file(base_file_path, cond_folder_path, density_values, modulus_values, color1, color2, color3)
     # Run Simulations
 
     print(os.listdir(os.path.join(main_exp_folder, exp_folder)))
@@ -122,18 +153,33 @@ def run_experiment(exp, mod_opt=None, density_opt = None):
                         call(["mjpython", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])            
     
     
-    
+parser = argparse.ArgumentParser(description='Process materials')
+parser.add_argument('--video', action='store_true', help='Flag for whether or not to save video of simulation')
+args = parser.parse_args()
+   
 # Run all experiments
-exps = ["materials_incr", "materials_decr", "density_incr", "density_decr", "modulus_incr", "modulus_decr"]
+exps = ["materials_incr", "materials_decr"] #, "density_incr", "density_decr", "modulus_incr", "modulus_decr"]
 for exp in exps:
-    run_experiment(exp)
+    pass
+    run_experiment(exp) 
     
 # Plot all experiments
 permutations = [list(combo) for combo in combinations(["PVC", "Ti", "SS"], 3)] #["PVC", "AL", "Ti", "SS"]
 for permutation in permutations:
-    for characteristic in ["Density", "Materials"]:
+    for characteristic in ["Materials"]: #"Density", 
         pass
         compare_experiments_exp3(permutation, characteristic)
+        
+        # Get Videos
+        folders = get_folder_name(permutation, characteristic)   
+        for folder_path in folders:
+            print("Folder Path: " + folder_path)
+            xml_path = [file for file in os.listdir(folder_path) if file.endswith('.xml')][0]
+            xml_path = os.path.join(folder_path, xml_path)
+            for behavior in range(1, 5):
+                if args.video and not os.path.exists(os.path.join(folder_path, "behavior_" + str(behavior) + "_video.mp4")):
+                    call(["python", "simulation_code/record-video.py", "xml", str(behavior), xml_path, folder_path])
+
         
 # Plot time series
 combination = ["PVC", "Ti", "SS"]

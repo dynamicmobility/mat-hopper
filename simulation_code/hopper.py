@@ -68,7 +68,9 @@ class Hopper:
       'leg_length': 0.61,
       'max_vel': 0.1,
       'base_hop_torque': 200,
-      'desired_hop_height': 1.0
+      'desired_hop_height': 1.0,
+      'leg_color': [0, 0, 0, 1],
+      'leg_color_phase': 0
     }
     self.hop_history = {
       'temp_max_height': 0,
@@ -263,6 +265,13 @@ class Hopper:
     phase = min(max(phase, 0), 1) 
     
     if self.state == State.FLIGHT and self.sensor['grf'] > 0 and self.actual['z_base_dot'] < 0 and phase == 1:
+      
+      self.params['leg_color_phase'] = (self.params['leg_color_phase'] + 0.1) % 1
+      r = max(0, min(1, 2 * (1 - abs(3 * self.params['leg_color_phase'] - 1))))
+      g = max(0, min(1, 2 * (1 - abs(3 * self.params['leg_color_phase'] - 2))))
+      b = max(0, min(1, 2 * (1 - abs(3 * self.params['leg_color_phase'] - 3))))
+      self.params['leg_color'] = [r, g, b, 1]
+            
       self.state = State.STANCE
       self.hop_history['time_of_switch'] = t
       # print("Switching to Stance")

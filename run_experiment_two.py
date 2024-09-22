@@ -3,6 +3,7 @@ from subprocess import call
 import os, sys
 from plotting_code.compare_experiments import *
 import re
+import argparse
 
 """
 This function runs Experiment 2 based on the given experiment name.
@@ -58,7 +59,7 @@ def plot_exp2(experiment_name):
     labels = [float(re.search(pattern, condition).group(1)) for condition in cond_2]
     compare_experiments_exp2(main_exp_folder, cond_2, labels, density=False)
 
-def run_exp(experiment_name):
+def run_exp(experiment_name, video_flag):
     user_path = os.getcwd()
     main_exp_folder = os.path.join(user_path, "Experiment_2", experiment_name)
     if not os.path.exists(main_exp_folder):
@@ -71,6 +72,7 @@ def run_exp(experiment_name):
         base_modulus = [4]
         base = "pvc"
         acr = "PVC"
+        color = [0.729411765, 0.635294118, 0.450980392]
     elif experiment_name == "AL_Sweep":
         density_vals  = sorted([2.7, 3.95, 8.66])
         modulus_vals = sorted([70, 20. ,  62.14])
@@ -78,6 +80,7 @@ def run_exp(experiment_name):
         base_modulus = [70]
         base = "aluminum"
         acr = "AL"
+        color = [0.611764706, 0.615686275, 0.709803922]
 
     elif experiment_name == "Ti_Sweep":
         density_vals   = sorted([4.43, 2.00, 4.24, 8.97, 19.00])
@@ -86,6 +89,7 @@ def run_exp(experiment_name):
         base_modulus = [120]
         base = "titanium"
         acr = "Ti"
+        color = [0.498039216, 0.501960784, 0.674509804]
     elif experiment_name == "SS_Sweep":
         density_vals  = sorted([8, 2, 4.31, 9.28, 20])
         modulus_vals = sorted([193, 15.        ,   60.82,  246.62, 1000.        ])
@@ -93,6 +97,7 @@ def run_exp(experiment_name):
         base_modulus = [193]
         base = "stainlesssteel"
         acr = "SS"
+        color = [0.411764706, 0.419607843, 0.658823529]
     else:
         raise ValueError("Invalid experiment name. Must be either 'PVC_Sweep', 'AL_Sweep', 'Ti_Sweep', or 'SS_Sweep'")
     
@@ -112,7 +117,7 @@ def run_exp(experiment_name):
             
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
         base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
-        parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
+        parse_file(base_file_path, cond_folder_path, str(density), str(stiffness), color, color, color)
         
         
     for i in range(len(density_vals)):
@@ -129,7 +134,7 @@ def run_exp(experiment_name):
             
         cond_folder_path = os.path.join(cond_folder_name, f'{condition_name}.xml')
         base_file_path = os.path.join(user_path, "simulation_code", "base-material.xml")
-        parse_file(base_file_path, cond_folder_path, str(density), str(stiffness))
+        parse_file(base_file_path, cond_folder_path, str(density), str(stiffness), color, color, color)
         
     # Run Simulations
     for folder in os.listdir(main_exp_folder):
@@ -138,20 +143,26 @@ def run_exp(experiment_name):
         if os.path.isdir(folder_path):
             xml_path = os.path.join(folder_path, folder + ".xml")
             # Run simulations for each folder
-            for behavior in range(1, 5):
+            for behavior in [2]: #range(1, 5):
                 pkl_name = "data_" + str(behavior) + ".pkl"
                 if not pkl_name in os.listdir(folder_path):
                     if sys.platform == "linux":
                         call(["python3", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])
                     else:
-                        call(["mjpython", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])            
+                        call(["mjpython", "simulation_code/main-hopping.py", "xml", str(behavior), xml_path, folder_path])          
+                        
+                if video_flag and not os.path.exists(os.path.join(folder_path, "behavior_" + str(behavior) + "_video.mp4")):
+                    call(["python", "simulation_code/record-video.py", "xml", str(behavior), xml_path, folder_path])  
                         
     # Plot Experiments
     plot_exp2(experiment_name)
 
 # MAIN FUNCTION CALL
 
+parser = argparse.ArgumentParser(description='Process materials')
+parser.add_argument('--video', action='store_true', help='Flag for whether or not to save video of simulation')
+args = parser.parse_args()
+
 exps = ["PVC_Sweep", "AL_Sweep"]
-# exps = ["PVC_Sweep", "SS_Sweep", "AL_Sweep", "Ti_Sweep"]
 for exp in exps:
-    run_exp(exp)
+    run_exp(exp, args.video)

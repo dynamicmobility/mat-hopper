@@ -44,9 +44,10 @@
 
     <worldbody>
         <geom name="floor" conaffinity="1" condim="6" pos="0 0 0" quat="1 0 0 0" size="0 0 .25" type="plane" material="matplane"/>
-        <geom name="ramp" conaffinity="1" condim="6" friction="1 0.005 0.0001" type="box" pos="2.0 0 -0.03" size="2 0.5 0.1" rgba="0.098 0.234 0.459 1" euler="0 -2 0" group="2"/>
+        <!-- <geom name="ramp" conaffinity="1" condim="6" friction="1 0.005 0.0001" type="box" pos="2.0 0 -0.03" size="2 0.5 0.1" rgba="0.098 0.234 0.459 1" euler="0 -2 0" group="2"/> -->
+        <geom name="ramp" conaffinity="1" condim="6" friction="1 0.005 0.0001" type="box" pos="2.0 0 -0.03" size="2 0.5 0.1" rgba="0.4 0.4 0.4 1" euler="0 -2 0" group="2"/>
 
-            <light directional="false" diffuse=".2 .2 .2" specular="0.1 0.1 0.1" pos="0 0 5" dir="0 -1 -1" castshadow="false"/>
+            <!-- <light directional="false" diffuse=".2 .2 .2" specular="0.1 0.1 0.1" pos="0 0 5" dir="0 -1 -1" castshadow="false"/> -->
             <light mode="targetbodycom" target="base" directional="false" diffuse=".5 .5 .5" specular="0.8 0.8 0.8" pos="0 0 4.0" dir="0 0 -1" castshadow="false" />
     </worldbody>
     
@@ -82,7 +83,7 @@
                         <body name="mat3" pos="0 0 -0.1">
                             <joint name="mat_spring3" axis="0 0 -1" type="slide" pos="0 0 0" stiffness="3E6" limited="false" />
                             <geom name="mat3_2" type="capsule" fromto="0 0 0 0 0 -.05" size="0.025" density="1390" material="navy blue" />
-                            <geom name="foot_upper" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="1000" material="grey" />
+                            <geom name="foot_upper" type="capsule" fromto="0 0 -0.05 0 0 -.1" size="0.025" density="1000" material="tech gold" />
                             <!-- Start of Foot -->
                             <body name="foot_lower" pos="0 0 -0.1">
                                 <joint name="spring" axis="0 0 -1" type="slide" pos="0 0 0" limited="true" range="-0.1 0.1" stiffness="8000" damping="10" />
