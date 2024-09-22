@@ -13,10 +13,13 @@
 
   </p>
   <strong>*</strong> designates equivalent contributions to this GitHub repository. 
-</p>
-<p align="center" style="margin: 2em auto;">
-    <a href='https://arxiv.org/abs/2409.09895'><img src='https://img.shields.io/badge/arXiv-Paper_PDF-red?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'></a>
-  </p>
+<h5 align="center">
+
+[![Website shields.io](https://img.shields.io/website?url=http%3A//tokenhmr.is.tue.mpg.de)](https://tokenhmr.is.tue.mpg.de) 
+[![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=Jgg_LfvoE4A)
+[![arXiv](https://img.shields.io/badge/arXiv-2404.16752-00ff00.svg)](https://arxiv.org/abs/2404.16752)
+ 
+</h5>
   <p align="center"> 
 
   <img src="GitHubHeaderHopper.png">
