@@ -22,7 +22,9 @@
 </h5>
   <p align="center"> 
 
-  <img src="GitHubHeaderHopper.png">
+<div style="display:flex;">
+    <img src="assets/func-grad.gif" width="80%" style="margin-right: 1px;">
+</div>
 
 
 ## Installation
