@@ -16,8 +16,8 @@
 <h5 align="center">
 
 [![Website shields.io](https://img.shields.io/website?url=http%3A//tokenhmr.is.tue.mpg.de)](https://tokenhmr.is.tue.mpg.de) 
-[![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=Jgg_LfvoE4A)
-[![arXiv](https://img.shields.io/badge/arXiv-2404.16752-00ff00.svg)](https://arxiv.org/abs/2404.16752)
+[![YouTube Badge](https://img.shields.io/badge/YouTube-Watch-red?style=flat-square&logo=youtube)](https://www.youtube.com/watch?v=SEuEXRi80XU)
+[![arXiv](https://img.shields.io/badge/arXiv-2409.09895-00ff00.svg)](https://arxiv.org/abs/2409.09895)
  
 </h5>
   <p align="center"> 
